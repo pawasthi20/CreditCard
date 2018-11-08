@@ -13,11 +13,11 @@ public class CreditCard
 	private String holderName;
 	
 	//Constructor
-	public CreditCard(int cN, double l, double b, double iR, String hN)
+	public CreditCard(int cN, double l, double iR, String hN)
 	{
 		cardNum = cN;
 		limit = l;
-		balance = b;
+		balance = 0;
 		interestRate = iR;
 		holderName = hN;
 	}
@@ -25,9 +25,10 @@ public class CreditCard
 	//Methods
 	public void charge(double charge)
 	{
-		if (charge < limit)
+		double newBalance = balance + charge;
+		if (newBalance < limit)
 		{
-			balance+=charge;
+			balance=newBalance;
 		}
 	}
 	public void credit(double credit)
@@ -38,8 +39,31 @@ public class CreditCard
 	{
 		balance+=(interestRate*balance);
 	}
+	
 	public String toString()
 	{
-		return "Card Number: " + cardNum + " Name: " + holderName + " Balance: " + balance + " Rate: " + interestRate + " Limit: " + limit;
+		return "Card Number: " + cardNum + "; Name: " + holderName + "; Balance: " + balance + "; Rate: " + interestRate + "; Limit: " + limit;
+	}
+	
+	//Accessor Methods
+	public int getCardNum() 
+	{
+		return cardNum;
+	}
+	public double getLimit() 
+	{
+		return limit;
+	}
+	public double getBalance() 
+	{
+		return balance;
+	}
+	public double getInterestRate() 
+	{
+		return interestRate;
+	}
+	public String getHolderName() 
+	{
+		return holderName;
 	}
 }
